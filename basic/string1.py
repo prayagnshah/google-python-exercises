@@ -43,7 +43,7 @@ def both_ends(s):
   if len(s) <= 2:
     return ""
   else:
-    final = s[0:2] + s[-2:]
+    final = s[0:2] + s[-2:]  ##using the string slicing
 
   return final
 
@@ -58,9 +58,12 @@ def both_ends(s):
 # Hint: s.replace(stra, strb) returns a version of string s
 # where all instances of stra have been replaced by strb.
 def fix_start(s):
-    # +++your code here+++
-    return
 
+  char = s[0]   ##defining the first position
+  new = s.replace(char, '*')   #using the funtion replace
+
+  s = char + new[1:]  ##making the string changes after position 1
+  return s
 
 # D. MixUp
 # Given strings a and b, return a single string with a and b separated
