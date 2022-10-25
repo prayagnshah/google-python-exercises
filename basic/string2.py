@@ -35,8 +35,15 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  return
+  strng = s.find('not')
+  sec_strng = s.find('bad')
+
+  if sec_strng > strng:
+    new_str = s.replace(s[strng:sec_strng+3], 'good')
+    return new_str
+
+  else:
+    return s
 
 
 # F. front_back
