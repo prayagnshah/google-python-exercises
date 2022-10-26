@@ -45,6 +45,17 @@ import sys
 # and builds and returns a word/count dict for it.
 # Then print_words() and print_top() can just call the utility function.
 
+def words_count(filename):
+  str_list = filename.split()  ##removing the whitespaces from the string
+  unique_words = set(str_list)  ##converting into set to use .count
+
+  for words in unique_words:
+    words = words.lower()
+    return words + str_list.count(words)   ##counting the words from the string and make it look like word 1 count 1
+
+def print_words(filename):
+
+
 ###
 
 # This basic command line argument parsing code is provided and
