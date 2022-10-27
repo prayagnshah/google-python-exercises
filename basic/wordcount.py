@@ -1,3 +1,5 @@
+from collections import Counter
+
 #!/usr/bin/python -tt
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
@@ -53,8 +55,17 @@ def words_count(filename):
     words = words.lower()
     return words + str_list.count(words)   ##counting the words from the string and make it look like word 1 count 1
 
-def print_words(filename):
+# def print_words(filename):
 
+
+def print_top(filename):
+  split_set = filename.split()   ##this will return all the words in the list
+  Counter = Counter(split_set)  ##Pass the split_set into Counter class
+
+  new = sorted(split_set)
+  most_occur = Counter.most_common(6)
+
+  return most_occur
 
 ###
 
