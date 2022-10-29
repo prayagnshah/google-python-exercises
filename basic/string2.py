@@ -35,11 +35,11 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  strng = s.find('not')
-  sec_strng = s.find('bad')
+  strng_s = s.find('not')
+  sec_strng_s = s.find('bad')
 
-  if sec_strng > strng:
-    new_str = s.replace(s[strng:sec_strng+3], 'good')
+  if sec_strng_s > strng_s:
+    new_str = s.replace(s[strng_s:sec_strng_s+3], 'good')
     return new_str
 
   else:
@@ -54,28 +54,28 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-  len_one = len(a)
-  len_second = len(b)
+  len_a = len(a)
+  len_b = len(b)
 
   ##use the if-else condition to add the integer values
-  if len_one % 2 == 0:
-    strng = len_one // 2
+  if len_a % 2 == 0:
+    strng = len_a // 2
   else:
-    strng = (len_one // 2) + 1
+    strng = (len_a // 2) + 1
 
-  if len_second % 2 == 0:
-    new_strng = len_second // 2
+  if len_b % 2 == 0:
+    new_strng = len_b // 2
   else:
-    new_strng = (len_second // 2) + 1
+    new_strng = (len_b // 2) + 1
 
     ##Defining the integer values in words format as interger cannot be reiterate
-    a_front = a[0:strng]
-    a_back = a[strng:]
-    b_front = b[0:new_strng]
-    b_back = b[new_strng:]
+  a_front = a[0:strng]
+  a_back = a[strng:]
+  b_front = b[0:new_strng]
+  b_back = b[new_strng:]
 
 
-    return a_front + b_front + a_back + b_back
+  return a_front + b_front + a_back + b_back
 
 
 # Simple provided test() function used in main() to print
