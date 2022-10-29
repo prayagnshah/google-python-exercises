@@ -1,6 +1,6 @@
-from collections import Counter
-
 #!/usr/bin/python -tt
+from collections import Counter, OrderedDict
+
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -50,25 +50,34 @@ import sys
 def words_count(filename):
   f = open(filename, 'r')
   words = f.read()
-  str_list = words.split()  ##removing the whitespaces from the string
-  counter = Counter(str_list)
+  lower_letters = words.lower()  ##lowering the letters as per the question
+  str_list = lower_letters.split()  ##removing the whitespaces from the string
+  sort = sorted(str_list, reverse = True)  ##Using true to get the values in ascending order
+  counter = Counter(sort)
 
   f.close()
 
+  print(counter)
   return counter
 
 
-# def print_words(filename):
+
+def print_words(filename):
+  count = words_count(filename)   ##calling the function words_count
+
+
 
 
 def print_top(filename):
-  split_set = filename.split()   ##this will return all the words in the list
-  Counter = Counter(split_set)  ##Passing the split_set into Counter class
+  count = words_count(filename)   ##calling the function words_count
 
-  new = sorted(split_set)
-  most_occur = Counter.most_common(6)
-
-  return most_occur
+  # i = 0
+  i = []
+  items = sorted(count.items(), reverse = False)   ##sorted the sequence in the ascending way
+  for item in items[:20]:
+    words = item[0] + ': ' + str(item[1]) + ' times'
+    i.append(words)
+  print(i)
 
 ###
 
