@@ -48,19 +48,22 @@ import sys
 # Then print_words() and print_top() can just call the utility function.
 
 def words_count(filename):
-  str_list = filename.split()  ##removing the whitespaces from the string
-  unique_words = set(str_list)  ##converting into set to use .count
+  f = open(filename, 'r')
+  words = f.read()
+  str_list = words.split()  ##removing the whitespaces from the string
+  counter = Counter(str_list)
 
-  for words in unique_words:
-    words = words.lower()
-    return words + str_list.count(words)   ##counting the words from the string and make it look like word 1 count 1
+  f.close()
+
+  return counter
+
 
 # def print_words(filename):
 
 
 def print_top(filename):
   split_set = filename.split()   ##this will return all the words in the list
-  Counter = Counter(split_set)  ##Pass the split_set into Counter class
+  Counter = Counter(split_set)  ##Passing the split_set into Counter class
 
   new = sorted(split_set)
   most_occur = Counter.most_common(6)
