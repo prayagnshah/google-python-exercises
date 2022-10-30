@@ -45,15 +45,19 @@ import random
 import sys
 
 
+
 def mimic_dict(filename):
-  """Returns mimic dict mapping each word to list of words which follow it."""
-  # +++your code here+++
+  f = open(filename, 'r')
+  words = f.read()
+  split_letters = words.split()  ##removing the whitespaces
+
+
   return
 
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
-  # +++your code here+++
+  list_word = []
   return
 
 
@@ -65,6 +69,7 @@ def main():
 
   dict = mimic_dict(sys.argv[1])
   print_mimic(dict, '')
+
 
 
 if __name__ == '__main__':
