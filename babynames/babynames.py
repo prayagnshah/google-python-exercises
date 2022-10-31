@@ -41,13 +41,18 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
+  res = []
   f = open(filename, 'r')
   words = f.read()
 
-  year = words.get('year')
+  year = re.search(r'Popularity in (\d+)', str)  ##using the regex functions and returning the match at the end of the word
+  res.append(year)
+
+  print(res)
 
 
-  return
+
+  return res
 
 
 def main():
@@ -55,6 +60,8 @@ def main():
   # Make a list of command line arguments, omitting the [0] element
   # which is the script itself.
   args = sys.argv[1:]
+
+
 
 
   if not args:
@@ -73,18 +80,20 @@ def main():
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
 
+
+
   for f in args:
     print ("Writing on the file", f)
     names = extract_names(f)
-    lines = " ".join(names)
+    lines = '\n'.join(names)
 
     if summary:
-      f = open(f, w)
-      f.write(lines + '\n')
+      f = open(f, 'w')
+      f.write(lines)
       f.close()
 
     else:
-      print lines
+      print(lines)
 
 
 if __name__ == '__main__':
