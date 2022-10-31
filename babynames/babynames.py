@@ -41,6 +41,12 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
+  f = open(filename, 'r')
+  words = f.read()
+
+  year = words.get('year')
+
+
   return
 
 
@@ -49,6 +55,7 @@ def main():
   # Make a list of command line arguments, omitting the [0] element
   # which is the script itself.
   args = sys.argv[1:]
+
 
   if not args:
     print 'usage: [--summaryfile] file [file ...]'
@@ -60,9 +67,25 @@ def main():
     summary = True
     del args[0]
 
+
+
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  
+
+  for f in args:
+    print ("Writing on the file", f)
+    names = extract_names(f)
+    lines = " ".join(names)
+
+    if summary:
+      f = open(f, w)
+      f.write(lines + '\n')
+      f.close()
+
+    else:
+      print lines
+
+
 if __name__ == '__main__':
   main()
