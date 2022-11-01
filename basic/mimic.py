@@ -49,19 +49,20 @@ import sys
 def mimic_dict(filename):
   f = open(filename, 'r')
   words = f.read()
-  split_letters = words.split()  ##removing the whitespaces
+  split_word = words.split()  ##removing the whitespaces
 
   dict = {}
-  for word in split_letters:
-    if word == split_letters[0]:
-      first_letter = word    ##listing the first position word which will work as key
+  for prev_word in split_word:
+    if prev_word == split_word[0]:
+      first_word = prev_word    ##listing the first position word which will work as key
+
     else:                    ##using the else condition to map the first letter as key and then emitting the different values
-      if first_letter in word:
-        dict[first_letter].append(word)
+      if first_word in prev_word:
+        dict[first_word].append(prev_word)
 
       else:
-        dict[first_letter] = []
-        dict[first_letter].append(word)
+        dict[first_word] = []
+        dict[first_word].append(prev_word)
 
     print(dict)
   return dict
@@ -73,7 +74,7 @@ def print_mimic(mimic_dict, word):
   for i in range(200):   ##printing the first 200 words
     count = count + 1    ##incrementing it upto 200
     if word in mimic_dict.keys():
-       return random.choice(mimic_dict[word])    ##having first word "Alice's" and then printng random words as values
+      return random.choice(mimic_dict[word])    ##having first word "Alice's" and then printng random words as values
 
     elif word == '':
       temp = random.choice(mimic_dict.keys())
