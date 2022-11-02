@@ -66,28 +66,23 @@ def mimic_dict(filename):
 ##by writing the below code will match the keys and values of the dict from the if else condition
     previous_word = word
 
-  print(dict)
+
 
   return dict
 
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
-  count = 0
-  for i in range(200):   ##printing the first 200 words
-    count = count + 1    ##incrementing it upto 200
-    if word in mimic_dict.keys():
-      return random.choice(mimic_dict[word])    ##having first word "Alice's" and then printng random words as values
-
-    elif word == '':
-      temp = random.choice(mimic_dict.keys())
-      return random.choice(mimic_dict[temp])
+  random_words = []   ##using alice.txt file to print the output
+  for words in range(200):
+    ##Using .get because we can print empty strings if word is not found.
+    ##using random.choice to print the random letters everytime
+    word = random.choice(mimic_dict.get(word, ''))
+    random_words.append(word)
+  print(random_words)
 
 
-    else:
-      return ('Not in dictionary')
-
-  return
+  return random_words
 
 
 # Provided main(), calls mimic_dict() and mimic()
