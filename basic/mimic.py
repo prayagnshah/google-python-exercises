@@ -51,20 +51,23 @@ def mimic_dict(filename):
   words = f.read()
   split_word = words.split()  ##removing the whitespaces
 
+  previous_word = ''
   dict = {}
-  for prev_word in split_word:
-    if prev_word == split_word[0]:
-      first_word = prev_word    ##listing the first position word which will work as key
+  for word in split_word:
 
-    else:                    ##using the else condition to map the first letter as key and then emitting the different values
-      if first_word in prev_word:
-        dict[first_word].append(prev_word)
+## All the fresh words from the .txt will be stored in dict[previous_word]
+    if previous_word not in dict:
+      dict[previous_word] = [word]
 
-      else:
-        dict[first_word] = []
-        dict[first_word].append(prev_word)
+## All the other similar words again will store in dictionary previous_word
+    else:
+      dict[previous_word].append(word)
 
-    print(dict)
+##by writing the below code will match the keys and values of the dict from the if else condition
+    previous_word = word
+
+  print(dict)
+
   return dict
 
 
