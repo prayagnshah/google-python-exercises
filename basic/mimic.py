@@ -73,16 +73,37 @@ def mimic_dict(filename):
 
 def print_mimic(mimic_dict, word):
   """Given mimic dict and start word, prints 200 random words."""
-  random_words = []   ##using alice.txt file to print the output
-  for words in range(200):
-    ##Using .get because we can print empty strings if word is not found.
-    ##using random.choice to print the random letters everytime
-    word = random.choice(mimic_dict.get(word, ''))
-    random_words.append(word)
-  print(random_words)
+  # random_words = ' '   ##using alice.txt file to print the output
+  # for _ in range(30):
+  #   ##Using .get because we can print empty strings if word is not found.
+  #   ##using random.choice to print the random letters everytime
+  #   word = random.choice(mimic_dict.get(word))
+  #   print(word, "")
+  #   # random_words = random_words + word
 
 
-  return random_words
+  for _ in range(200):
+    random_words = []
+    nexts = mimic_dict.get(word, '')          # Returns empty string if not found
+    print(nexts)
+    if not nexts:
+      nexts = mimic_dict['']    ##This condition is used because we need to start again with the empty string
+    word = random.choice(nexts)
+
+    string_word = random_words.append(word)
+  string_word = "".join(str(string_word))
+
+  print(string_word)
+
+  #   s = ' '.join(string_word)
+  # print(string_word)
+
+
+
+
+
+
+  return
 
 
 # Provided main(), calls mimic_dict() and mimic()
@@ -98,3 +119,6 @@ def main():
 
 if __name__ == '__main__':
   main()
+
+
+
