@@ -9,6 +9,7 @@
 import sys
 import re
 
+
 """Baby Names exercise
 
 Define the extract_names() function below and change main()
@@ -42,13 +43,11 @@ def extract_names(filename):
   """
   # +++your code here+++
   res = []
-  f = open(filename, 'r')
-  words = f.read()
-
-  year = re.search(r'Popularity in (\d+)', str)  ##using the regex functions and returning the match at the end of the word
-  res.append(year)
-
-  print(res)
+  f = open(filename, 'rU')
+  words = f.read()   ##reading the whole html file
+  # print(words)
+  year_match = re.search('\d\d\d\d', words)  ##getting the year from the html file.
+  print(year_match)
 
 
 
@@ -64,6 +63,7 @@ def main():
 
 
 
+
   if not args:
     print 'usage: [--summaryfile] file [file ...]'
     sys.exit(1)
@@ -74,6 +74,13 @@ def main():
     summary = True
     del args[0]
 
+  for filename in args:
+    names = extract_names(filename)
+
+
+    # text = "\n".join(names)
+    # print(text)
+
 
 
   # +++your code here+++
@@ -82,18 +89,19 @@ def main():
 
 
 
-  for f in args:
-    print ("Writing on the file", f)
-    names = extract_names(f)
-    lines = '\n'.join(names)
+  # for filename in args:
+  #   # names = extract_names(filename)
+  #   print(filename)
+  #   names = extract_names(f)
+  #   lines = '\n'.join(names)
 
-    if summary:
-      f = open(f, 'w')
-      f.write(lines)
-      f.close()
+  #   if summary:
+  #     f = open(f, 'w')
+  #     f.write(lines)
+  #     f.close()
 
-    else:
-      print(lines)
+  #   else:
+  #     print(lines)
 
 
 if __name__ == '__main__':
