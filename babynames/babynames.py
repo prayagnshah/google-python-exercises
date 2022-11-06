@@ -42,16 +42,22 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  res = []
+  year = []
   f = open(filename, 'rU')
   words = f.read()   ##reading the whole html file
   # print(words)
-  year_match = re.search('\d\d\d\d', words)  ##getting the year from the html file.
-  print(year_match)
+
+  ##using the \s for the whitespace and \d to find the digits
+  year_match = re.search(r'Popularity\sin\s(\d\d\d\d)', words)  ##getting the year from the html file.
+
+##using .group function to bring the 1st substring of the html file
+  res_year = year_match.group(1)
+  year.append(res_year)
+  print(year)
 
 
 
-  return res
+  return
 
 
 def main():
@@ -76,10 +82,8 @@ def main():
 
   for filename in args:
     names = extract_names(filename)
-
-
-    # text = "\n".join(names)
-    # print(text)
+    # text = " ".join(names)
+    # return text
 
 
 
