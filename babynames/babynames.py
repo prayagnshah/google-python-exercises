@@ -60,11 +60,21 @@ def extract_names(filename):
 
   name_rank = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', words)
 
-  print(name_rank)
+  # print(name_rank)
 
-# def names_data(filename):
+  ## Getting the names data into dict
+  names_rank = {}
 
-#   return
+  for rank,boy_name,girl_name in name_rank:
+
+##Adding boy name and girl name in empty dictionary names_rank
+    names_rank[boy_name] = rank
+    names_rank[girl_name] = rank
+
+  print(names_rank)
+
+
+
 
 
 def main():
