@@ -112,15 +112,18 @@ def main():
 
   for filename in args:
     names = extract_names(filename)
-    # text = ' '.join(names)
-    print(names)
+    text = '\n'.join(names)
+
 
     if summary:
-      file = open(filename + '.txt' , 'w')
-      file.write(names)
+      file = open(filename + '.summary' , 'w')
+      file.write(str(text))
       file.close()
 
       print(file)
+
+    else:
+      print(names)
 
 
 
