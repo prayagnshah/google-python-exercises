@@ -83,8 +83,8 @@ def extract_names(filename):
 ##milestone no. 5
   for baby_name in sorted_names:
     year.append(baby_name + ' ' + names_rank[baby_name])
-  print(year)
-
+  # print(year)
+  return year
 
 
 
@@ -112,31 +112,21 @@ def main():
 
   for filename in args:
     names = extract_names(filename)
-    # res = names_data(filename)
-    # text = " ".join(names)
-    # return text
+    # text = ' '.join(names)
+    print(names)
+
+    if summary:
+      file = open(filename + '.txt' , 'w')
+      file.write(names)
+      file.close()
+
+      print(file)
 
 
 
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-
-
-
-  # for filename in args:
-  #   # names = extract_names(filename)
-  #   print(filename)
-  #   names = extract_names(f)
-  #   lines = '\n'.join(names)
-
-  #   if summary:
-  #     f = open(f, 'w')
-  #     f.write(lines)
-  #     f.close()
-
-  #   else:
-  #     print(lines)
 
 
 if __name__ == '__main__':
