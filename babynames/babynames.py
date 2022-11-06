@@ -71,7 +71,16 @@ def extract_names(filename):
     names_rank[boy_name] = rank
     names_rank[girl_name] = rank
 
-  print(names_rank)
+##Sorting the names in alphabetical order as per the output
+  sorted_names = sorted(names_rank.keys())
+
+##Adding the baby names in the list as per the question
+##milestone no. 5
+  for baby_name in sorted_names:
+    year.append(baby_name + ' ' + names_rank[baby_name])
+  print(year)
+
+  # print(sorted_names)
 
 
 
