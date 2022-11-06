@@ -68,8 +68,13 @@ def extract_names(filename):
   for rank,boy_name,girl_name in name_rank:
 
 ##Adding boy name and girl name in empty dictionary names_rank
-    names_rank[boy_name] = rank
-    names_rank[girl_name] = rank
+#Adding if-else statement to make sure the entries are not repeated
+#milstone no.4
+    if boy_name not in names_rank:
+      names_rank[boy_name] = rank
+    if girl_name not in name_rank:
+      names_rank[girl_name] = rank
+  # print(names_rank)
 
 ##Sorting the names in alphabetical order as per the output
   sorted_names = sorted(names_rank.keys())
@@ -80,7 +85,6 @@ def extract_names(filename):
     year.append(baby_name + ' ' + names_rank[baby_name])
   print(year)
 
-  # print(sorted_names)
 
 
 
