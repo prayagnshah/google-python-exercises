@@ -55,9 +55,16 @@ def extract_names(filename):
   year.append(res_year)
   print(year)
 
+## using \d+ will bring one or more occurences after the string or number
+## for eg, if for 1990 and if \d used then it will just print empty string
 
+  name_rank = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', words)
 
-  return
+  print(name_rank)
+
+# def names_data(filename):
+
+#   return
 
 
 def main():
@@ -82,6 +89,7 @@ def main():
 
   for filename in args:
     names = extract_names(filename)
+    # res = names_data(filename)
     # text = " ".join(names)
     # return text
 
