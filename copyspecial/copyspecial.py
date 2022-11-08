@@ -18,6 +18,16 @@ import commands
 # +++your code here+++
 # Write functions and modify main() to call them
 
+def get_special_paths(dir):
+  print("Hello")
+  return
+
+def copy_to(paths, dir):
+  return
+
+def zip_to(paths, zippath):
+  return
+
 
 
 def main():
@@ -30,6 +40,7 @@ def main():
   if not args:
     print "usage: [--todir dir][--tozip zipfile] dir [dir ...]";
     sys.exit(1)
+
 
   # todir and tozip are either set from command line
   # or left as the empty string.
@@ -44,12 +55,20 @@ def main():
     tozip = args[1]
     del args[0:2]
 
+
   if len(args) == 0:
     print "error: must specify one or more dirs"
     sys.exit(1)
 
+  names = get_special_paths(dir)
+  print(names)
+
+
+
   # +++your code here+++
   # Call your functions
-  
+
+
+
 if __name__ == "__main__":
   main()
