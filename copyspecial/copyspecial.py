@@ -18,9 +18,23 @@ import commands
 # +++your code here+++
 # Write functions and modify main() to call them
 
+##Milestone No.1
 def get_special_paths(dir):
-  print("Hello")
-  return
+  files = []  ##we will store pathname in the empty list
+
+  ##iterating the filename which we mention in the directory
+
+  for path in os.listdir(dir):
+
+    ##We want the special files in the given directory
+    match = re.search(r'(\w+)', path)
+    if match:
+
+      ##Joining the directory mentioned by us and then the
+      ##path stored in the following directory
+      files.append(os.path.abspath(os.path.join(dir, path)))
+  print(files)
+
 
 def copy_to(paths, dir):
   return
@@ -60,13 +74,20 @@ def main():
     print "error: must specify one or more dirs"
     sys.exit(1)
 
-  names = get_special_paths(dir)
-  print(names)
+
 
 
 
   # +++your code here+++
   # Call your functions
+
+  for dir in args:
+    file = get_special_paths(dir)
+
+
+  # # print(file)
+
+
 
 
 
