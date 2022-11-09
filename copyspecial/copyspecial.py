@@ -26,17 +26,25 @@ def get_special_paths(dir):
 
   for path in os.listdir(dir):
 
-    ##We want the special files in the given directory
-    match = re.search(r'(\w+)', path)
-    if match:
+    # ##We want the special files in the given directory
+    # match = re.search(r'(\w+)', path)
+    # if match:
 
       ##Joining the directory mentioned by us and then the
       ##path stored in the following directory
-      files.append(os.path.abspath(os.path.join(dir, path)))
-  print(files)
+    files.append(os.path.abspath(os.path.join(dir, path)))
+  # print(files)
+  return
 
 
 def copy_to(paths, dir):
+
+  ##Will check if the path exists or not. If not, then it will create new directory
+
+  if not os.path.exists('dir'):
+    os.makedirs(dir)
+
+
   return
 
 def zip_to(paths, zippath):
@@ -80,9 +88,12 @@ def main():
 
   # +++your code here+++
   # Call your functions
-
+  paths = []
   for dir in args:
-    file = get_special_paths(dir)
+    var = get_special_paths(dir)  ##storing all the types of values in empty variable paths
+
+  if todir:
+    copy_to(paths, todir)
 
 
   # # print(file)
