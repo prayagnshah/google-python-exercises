@@ -40,9 +40,19 @@ def get_special_paths(dir):
 def copy_to(paths, dir):
 
   ##Will check if the path exists or not. If not, then it will create new directory
-
   if not os.path.exists('dir'):
     os.makedirs(dir)
+
+
+  # file = []
+
+  ##Retrieving the list of files in given directory
+  for path in os.listdir(dir):
+    os.path.isfile(os.path.join(dir, path))   ##joining the files in that directory
+    shutil.copy(os.path.join(dir, path), paths)  ##copying those files into the target destination paths
+    print(path)
+
+
 
 
   return
@@ -91,9 +101,11 @@ def main():
   paths = []
   for dir in args:
     var = get_special_paths(dir)  ##storing all the types of values in empty variable paths
+    names = copy_to(paths, dir)
+  # if todir:
+  #   copy_to(paths, todir)
+  # elif
 
-  if todir:
-    copy_to(paths, todir)
 
 
   # # print(file)
