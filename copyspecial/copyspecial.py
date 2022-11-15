@@ -25,32 +25,33 @@ def get_special_paths(dir):
   ##iterating the filename which we mention in the directory
 
   for path in os.listdir(dir):
-
-    # ##We want the special files in the given directory
-    # match = re.search(r'(\w+)', path)
-    # if match:
-
-      ##Joining the directory mentioned by us and then the
-      ##path stored in the following directory
-    files.append(os.path.abspath(os.path.join(dir, path)))
-  # print(files)
+    if re.match(r'.(\w+)', path):
+      # files.append(os.path.abspath(os.path.join(dir, path)))
+      files.append(path)
+  print(files)
   return
 
 
 def copy_to(paths, dir):
 
   ##Will check if the path exists or not. If not, then it will create new directory
-  if not os.path.exists('dir'):
+  if not os.path.exists(dir):
     os.makedirs(dir)
+
+  ##Copying the files from paths to dir directory using the fucntion shutil
+  for path in paths:
+    shutil.copy(path, os.path.join(dir))
+    print(path)
+
 
 
   # file = []
 
-  ##Retrieving the list of files in given directory
-  for path in os.listdir(dir):
-    os.path.isfile(os.path.join(dir, path))   ##joining the files in that directory
-    shutil.copy(os.path.join(dir, path), paths)  ##copying those files into the target destination paths
-    print(path)
+  # ##Retrieving the list of files in given directory
+  # for path in os.listdir(dir):
+  #   os.path.isfile(os.path.join(dir, path))   ##joining the files in that directory
+  #   shutil.copy(os.path.join(dir, path), paths)  ##copying those files into the target destination paths
+  #   print(path)
 
 
 
@@ -58,14 +59,17 @@ def copy_to(paths, dir):
   return
 
 def zip_to(paths, zippath):
-  cmd = 'zip -j' + zippath + ' ' + ' '.join(paths)
-  # (status, output) = commands.getstatusoutput(cmd)
+
+  var = get_special_paths(zippath)
+  print(var)
+  # zip_file = 'zip -j' + zippath + ' ' + ' '.join(paths)
+  # (status, output) = commands.getstatusoutput(zip_file)
 
   # if status:
   #   sys.stderr.write(output)
   #   sys.exit(1)
 
-  print("I am going to do: " + cmd)
+  # print("I am going to do: " + zip_file)
   return
 
 
