@@ -18,18 +18,26 @@ import commands
 # +++your code here+++
 # Write functions and modify main() to call them
 
-##Milestone No.1
+#Milestone No.1
 def get_special_paths(dir):
   files = []  ##we will store pathname in the empty list
 
   ##iterating the filename which we mention in the directory
 
   for path in os.listdir(dir):
-    if re.match(r'.(\w+)', path):
-      # files.append(os.path.abspath(os.path.join(dir, path)))
-      files.append(path)
+    # print(path)
+
+#output: a.txt, b.txt, copyspecial.pysolution, test.py, xyz__hello__.txty.txt, zz__something__.jpg
+#   #   if re.match(r'.(\w+)', path):
+    files.append(os.path.abspath(os.path.join(dir, path)))
   print(files)
-  return
+
+##output:  ['D:\\github\\google-python-exercises\\copyspecial\\a.txt', 'D:\\github\\google-python-exercises\\copyspecial\\b.txt',
+# 'D:\\github\\google-python-exercises\\copyspecial\\copyspecial.py', 'D:\\github\\google-python-exercises\\copyspecial\\solution',
+# 'D:\\github\\google-python-exercises\\copyspecial\\test.py', 'D:\\github\\google-python-exercises\\copyspecial\\xyz__hello__.txt',
+# 'D:\\github\\google-python-exercises\\copyspecial\\y.txt', 'D:\\github\\google-python-exercises\\copyspecial\\zz__something__.jpg']
+
+#   return
 
 
 def copy_to(paths, dir):
@@ -60,8 +68,8 @@ def copy_to(paths, dir):
 
 def zip_to(paths, zippath):
 
-  var = get_special_paths(zippath)
-  print(var)
+  # var = get_special_paths(zippath)
+  # print(var)
   # zip_file = 'zip -j' + zippath + ' ' + ' '.join(paths)
   # (status, output) = commands.getstatusoutput(zip_file)
 
@@ -114,12 +122,14 @@ def main():
   for dir in args:
     var = get_special_paths(dir)  ##storing all the types of values in empty variable paths
 
-  if todir:
-    copy_to(paths, todir)
-  elif tozip:
-    zip_to(paths,tozip)
-  else:
-    print(paths)
+
+
+  # if todir:
+  #   copy_to(paths, todir)
+  # elif tozip:
+  #   zip_to(paths,tozip)
+  # else:
+  #   print(paths)
 
 
 
