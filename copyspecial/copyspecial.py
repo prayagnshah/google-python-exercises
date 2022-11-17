@@ -30,7 +30,7 @@ def get_special_paths(dir):
 #output: a.txt, b.txt, copyspecial.pysolution, test.py, xyz__hello__.txty.txt, zz__something__.jpg
 #   #   if re.match(r'.(\w+)', path):
     files.append(os.path.abspath(os.path.join(dir, path)))
-  print(files)
+  # print(files)
 
 ##output:  ['D:\\github\\google-python-exercises\\copyspecial\\a.txt', 'D:\\github\\google-python-exercises\\copyspecial\\b.txt',
 # 'D:\\github\\google-python-exercises\\copyspecial\\copyspecial.py', 'D:\\github\\google-python-exercises\\copyspecial\\solution',
@@ -40,16 +40,30 @@ def get_special_paths(dir):
 #   return
 
 
-def copy_to(paths, dir):
+def copy_to(paths, to_dir):
+
+
+  #"""Copy all of the given files to the given dir, creating it if necessary."""
+  if not os.path.exists(to_dir):
+    os.mkdir(to_dir)
+  for path in paths:
+
+    shutil.copy(path, os.path.join(to_dir, fname))
+
+
 
   ##Will check if the path exists or not. If not, then it will create new directory
-  if not os.path.exists(dir):
-    os.makedirs(dir)
+  # if not os.path.exists(dir):
+  #   os.makedirs(dir)
 
-  ##Copying the files from paths to dir directory using the fucntion shutil
-  for path in paths:
-    shutil.copy(path, os.path.join(dir))
-    print(path)
+  # ##Copying the files from paths to dir directory using the fucntion shutil
+  # for path in paths:
+  #   shutil.copy(path, os.path.join(dir))
+  #   print(path)
+
+  # print(paths, dir)
+
+
 
 
 
@@ -124,8 +138,8 @@ def main():
 
 
 
-  # if todir:
-  #   copy_to(paths, todir)
+  if todir:
+    copy_to(paths, todir)
   # elif tozip:
   #   zip_to(paths,tozip)
   # else:
