@@ -25,7 +25,22 @@ def read_urls(filename):
   Screens out duplicate urls and returns the urls sorted into
   increasing order."""
   # +++your code here+++
-  
+
+  urls = set()   ##Using set to eliminate the duplicates
+  f = open(filename)
+  # file = f.read()
+  # print(file)
+  for lines in f:
+    # print(lines)
+    match_urls = re.search(r'GET (\S+)', lines)  ##\S matches non-space char
+    res_match_urls = match_urls.group(1)
+    urls.add("http:/" + res_match_urls)  ##using .add to add the element and set will eliminate the duplicates.
+
+    ascending_order = sorted(urls)   ##sorting it into the ascending order
+
+  print(ascending_order)
+
+
 
 def download_images(img_urls, dest_dir):
   """Given the urls already in the correct order, downloads
@@ -36,7 +51,7 @@ def download_images(img_urls, dest_dir):
   Creates the directory if necessary.
   """
   # +++your code here+++
-  
+
 
 def main():
   args = sys.argv[1:]
@@ -56,6 +71,8 @@ def main():
     download_images(img_urls, todir)
   else:
     print '\n'.join(img_urls)
+
+
 
 if __name__ == '__main__':
   main()
