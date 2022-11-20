@@ -52,6 +52,9 @@ def download_images(img_urls, dest_dir):
   """
   # +++your code here+++
 
+  if not os.path.exists(dest_dir):
+    os.mkdir(dest_dir)
+
 
 def main():
   args = sys.argv[1:]
