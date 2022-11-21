@@ -38,7 +38,8 @@ def read_urls(filename):
 
     ascending_order = sorted(urls)   ##sorting it into the ascending order
 
-  print(ascending_order)
+  # print(ascending_order)
+  return
 
 
 
@@ -55,6 +56,12 @@ def download_images(img_urls, dest_dir):
   if not os.path.exists(dest_dir):
     os.mkdir(dest_dir)
 
+  html = ["<html>,<body>"]  ##trying to build html as per the question
+
+  ##img_urls is empty so it is having none type object.
+  for url in img_urls:
+    image_name = url.split("/")
+    print(image_name)
 
 def main():
   args = sys.argv[1:]
