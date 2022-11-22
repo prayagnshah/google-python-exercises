@@ -9,7 +9,7 @@
 import os
 import re
 import sys
-import urllib
+import urllib.request
 
 """Logpuzzle exercise
 Given an apache logfile, find the puzzle urls and download the images.
@@ -39,7 +39,7 @@ def read_urls(filename):
     ascending_order = sorted(urls)   ##sorting it into the ascending order
 
   # print(ascending_order)
-  return
+  return ascending_order
 
 
 
@@ -60,8 +60,17 @@ def download_images(img_urls, dest_dir):
 
   ##img_urls is empty so it is having none type object.
   for url in img_urls:
-    image_name = url.split("/")
-    print(image_name)
+    image_name = url.split("/")  ##splitting the sentence into different parts
+
+##Downloading the image
+    image_download = urllib.request.urlopen(url)
+
+    image = open(image_name, "wb")
+    image.write(image_download.read())
+
+    print(image)
+
+
 
 def main():
   args = sys.argv[1:]
