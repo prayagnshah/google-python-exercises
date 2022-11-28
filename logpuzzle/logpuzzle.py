@@ -10,6 +10,7 @@ import os
 import re
 import sys
 import urllib
+from urlparse import urlparse
 
 """Logpuzzle exercise
 Given an apache logfile, find the puzzle urls and download the images.
@@ -36,10 +37,16 @@ def read_urls(filename):
     res_match_urls = match_urls.group(1)
     urls.add("http:/" + res_match_urls)  ##using .add to add the element and set will eliminate the duplicates.
 
-    ascending_order = sorted(urls)   ##sorting it into the ascending order
+  ascending_order = sorted(urls)   ##sorting it into the ascending order
+
+
+  slice_result = ascending_order[3:28]
+  print(slice_result)
+
+
 
   # print(ascending_order)
-  return ascending_order
+  # return ascending_order
 
 
 
@@ -56,19 +63,58 @@ def download_images(img_urls, dest_dir):
   if not os.path.exists(dest_dir):
     os.mkdir(dest_dir)
 
-  html = ["<html>,<body>"]  ##trying to build html as per the question
+  html_parts = ["<html><body>"]  ##trying to build html as per the question
 
   ##img_urls is empty so it is having none type object.
-  for url in img_urls:
-    # image_name = url.strip()  ##splitting the sentence into different parts
+  # for url in img_urls:
+    # print(url)
+#     image_name = url.strip()  ##splitting the sentence into different parts
 
-##Downloading the image
-    image_download = urllib.request.urlopen(url)
+# ##Downloading the image
+#     image_download = urllib.request.urlopen(url)
 
-    # image = open(image_name, "wb")
-    # image.write(image_download.read())
+#     image = open(image_name, "wb")
+#     image.write(image_download.read())
 
-    print(image_download)
+#     print(image_download)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    # for i, url in enumerate(img_urls):
+    #   try:
+    #     file = urllib.urlopen(url)
+    #     print(file)
+    #     img = file.read()
+    #     f = open("./%s/img%d" % (dest_dir, i), 'wb')
+    #     f.write(img)
+    #     f.close()
+
+    # #     html_parts.append('<img src="img%d">' % i)
+
+    #   except IOError:
+    #     print("Problem reading url", url)
+    #   html_parts.append("</body></html>")
+    # # # print(html_parts)
+
+    # # Write HTML file
+    # f = open('./' + dest_dir + '/index.html','w')
+    # f.write(''.join(html_parts))
+    # f.close()
+
+    # print(html_parts)
+
 
 
 
