@@ -10,7 +10,8 @@ import os
 import re
 import sys
 import urllib
-from urlparse import urlparse
+
+
 
 """Logpuzzle exercise
 Given an apache logfile, find the puzzle urls and download the images.
@@ -40,8 +41,9 @@ def read_urls(filename):
   ascending_order = sorted(urls)   ##sorting it into the ascending order
 
 
-  slice_result = ascending_order[3:28]
-  print(slice_result)
+  slice_result = ascending_order[8:28]
+  # print(slice_result)
+  return slice_result
 
 
 
@@ -51,6 +53,7 @@ def read_urls(filename):
 
 
 def download_images(img_urls, dest_dir):
+
   """Given the urls already in the correct order, downloads
   each image into the given directory.
   Gives the images local filenames img0, img1, and so on.
@@ -63,60 +66,30 @@ def download_images(img_urls, dest_dir):
   if not os.path.exists(dest_dir):
     os.mkdir(dest_dir)
 
-  html_parts = ["<html><body>"]  ##trying to build html as per the question
+  ##Creating a new file in order to store the html lines
 
-  ##img_urls is empty so it is having none type object.
-  # for url in img_urls:
-    # print(url)
-#     image_name = url.strip()  ##splitting the sentence into different parts
+  new_file = file(os.path.join(dest_dir, 'index.html'), 'w')
+  new_file.write('<html>\n<body>\n')
 
-# ##Downloading the image
-#     image_download = urllib.request.urlopen(url)
+  i = 0
+  ##printing the urls in order to have img numbers besides it
+  for url in img_urls:
+    local_name = 'img%d' % i
+    print('Retrieving', url)
 
-#     image = open(image_name, "wb")
-#     image.write(image_download.read())
+    ##Using package urllib to download the image and then merge the directory with image numbers
+    var = urllib.urlretrieve(url, os.path.join(dest_dir, local_name))
+    print(var)
+    ##Writing the file img src according to the qustion
+    new_file.write('<img src= %s' % local_name)
+    i = i+1
 
-#     print(image_download)
-
-
-
-
-
-
-
-
-
+    ##End part of html and closing the file
+    new_file.write('\n</body></html>')
+    new_file.close()
 
 
-
-
-
-
-    # for i, url in enumerate(img_urls):
-    #   try:
-    #     file = urllib.urlopen(url)
-    #     print(file)
-    #     img = file.read()
-    #     f = open("./%s/img%d" % (dest_dir, i), 'wb')
-    #     f.write(img)
-    #     f.close()
-
-    # #     html_parts.append('<img src="img%d">' % i)
-
-    #   except IOError:
-    #     print("Problem reading url", url)
-    #   html_parts.append("</body></html>")
-    # # # print(html_parts)
-
-    # # Write HTML file
-    # f = open('./' + dest_dir + '/index.html','w')
-    # f.write(''.join(html_parts))
-    # f.close()
-
-    # print(html_parts)
-
-
-
+  print(new_file)
 
 def main():
   args = sys.argv[1:]
